@@ -1,24 +1,35 @@
+import std/[sequtils, sugar]
+
 var
   a = @[1, 2, 3]
-  b = newSeq[int](3)
+  b = a.mapIt(it * it)
+  c = a.filterIt(it mod 2 == 0)
 
+# iterate elem and index
 for i, v in a:
   b[i] = v*v
 
-for i in 4..100:
+for i in 4..10:
   b.add(i * i)
 
+echo "b = ", b
+
+# Sum of lists
+let sumList = a & b
+echo sumList
+
+# remove item
 b.delete(0)  # takes O(n) time
 b = a[0] & b  # Same as original b
 
 
 # Immutability
 
-let a = @[1, 2, 3]
-a.add(4)
+let d = @[1, 2, 3]
+# d.add(4) # ERROR
 
-var b = @[1, 2, 3]
-b.add(4)
+var e = @[1, 2, 3]
+e.add(4)
 
 proc doSomething(mySeq: seq[int]) =
   mySeq[0] = 2  # this is a compile-time error
