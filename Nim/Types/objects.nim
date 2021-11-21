@@ -1,7 +1,6 @@
-type
-  Animal* = object
-    name*, species*: string
-    age: int
+type Animal* = object
+  name*, species*: string
+  age: int
 
 proc sleep*(a: var Animal) =
   a.age += 1
@@ -9,14 +8,15 @@ proc sleep*(a: var Animal) =
 proc dead*(a: Animal): bool =
   result = a.age > 20
 
-var carl: Animal
-carl = Animal(name : "Carl",
-              species : "L. glama",
-              age : 12)
+var carl = Animal(
+  name : "Carl",
+  species : "L. glama",
+  age : 12)
 
-let joe = Animal(name : "Joe",
-                 species : "H. sapiens",
-                 age : 23)
+let joe = Animal(
+  name : "Joe",
+  species : "H. sapiens",
+  age : 23)
 
 assert(not carl.dead)
 for i in 0..10:
