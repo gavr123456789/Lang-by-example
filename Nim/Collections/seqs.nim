@@ -1,4 +1,4 @@
-import std/[sequtils, sugar]
+import std/[sequtils]
 
 var
   a = @[1, 2, 3]
@@ -26,7 +26,7 @@ b = a[0] & b  # Same as original b
 # Immutability
 
 let d = @[1, 2, 3]
-# d.add(4) # ERROR
+d.add(4) # ERROR
 
 var e = @[1, 2, 3]
 e.add(4)

@@ -19,9 +19,18 @@ let sumList = a @ b
 printfn "%A" sumList // %A print all elems
 
 // remove item
+// F# lists are singly-linked lists
+let rec remove i l =
+    match i, l with
+    | 0, x::xs -> xs // detauch head if removing first
+    | i, x::xs -> x::remove (i - 1) xs // recursive call without first
+    | i, [] -> failwith "index out of range"
+
+b |> remove 0
+b <- a[0] :: b
 
 
 // Immutability
 
 let d = [1; 2; 3]
-// d <- 4 :: d // ERROR
+d <- 4 :: d // ERROR
