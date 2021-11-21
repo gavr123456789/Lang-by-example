@@ -4,14 +4,14 @@ const app = express();
 const port = 3000;
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+  console.log(`started`);
 })
 
-const hello = async (request: Request, response: Response, next: NextFunction) => {
+const hello = async (request: Request, response: Response) => {
   response.status(200).json("Hello from Typesctipt!");
 }
 
-const json = async (request: Request, response: Response, next: NextFunction) => {
+const json = async (request: Request, response: Response) => {
   response.status(200).json({"name": "Isaac", "books": ["Robot Dreams"]});
 }
 
