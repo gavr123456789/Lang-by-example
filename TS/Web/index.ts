@@ -4,12 +4,16 @@ const app = express();
 const port = 3000;
 
 app.listen(port, () => {
-  console.log(`sas`);
-});
+  console.log(`Listening at http://localhost:${port}`);
+})
 
-const getLocationsWithTimezones = async (request: Request, response: Response, next: NextFunction) => {
-  console.log(request.url);
-  response.status(200).json("Hello Typesctipt!");
-};
+const hello = async (request: Request, response: Response, next: NextFunction) => {
+  response.status(200).json("Hello from Typesctipt!");
+}
 
-app.get('/hello', getLocationsWithTimezones);
+const json = async (request: Request, response: Response, next: NextFunction) => {
+  response.status(200).json({"name": "Isaac", "books": ["Robot Dreams"]});
+}
+
+app.get('/hello', hello);
+app.get('/json', json);
