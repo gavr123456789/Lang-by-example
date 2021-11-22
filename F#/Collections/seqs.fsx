@@ -26,8 +26,9 @@ let rec remove i l =
     | i, x::xs -> x::remove (i - 1) xs // recursive call without first
     | i, [] -> failwith "index out of range"
 
-b |> remove 0
+b |> remove 0 // takes O(n^2) in worst
 b <- a[0] :: b
+// use list when need adding, use arrays for editing indexed elems
 
 
 // Immutability
