@@ -1,3 +1,4 @@
+# nim c -d=danger --gc:arc --hints:off
 import math, os, strutils
 
 type

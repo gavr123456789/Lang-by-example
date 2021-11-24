@@ -1,3 +1,4 @@
+# nim c -d=danger --gc:arc --hints:off
 proc fibonacci(n: int): int = 
   if n <= 1:
     return n

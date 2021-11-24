@@ -1,3 +1,4 @@
+// gcc -O3 nbody.c
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
