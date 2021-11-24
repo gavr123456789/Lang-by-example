@@ -1,9 +1,9 @@
 import strutils, random
 
-randomize()
-let answer = rand(10)
+let answer = rand(100)
+echo "Guess the number between 1 and 100"
+
 while true:
-  echo "I have a number from 1 to 10, what is it? "
   let guess = parseInt(stdin.readLine)
 
   if guess < answer:
@@ -14,7 +14,3 @@ while true:
     echo "Correct!"
     break
 
-block busyloops:
-  while true:
-    while true:
-      break busyloops
