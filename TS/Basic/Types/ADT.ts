@@ -1,3 +1,60 @@
+// Bad example
+interface IRemoteData<T> {
+  result?: T
+  error?: string
+  isLoading: boolean
+  isLoaded: boolean
+}
+
+// Same on OOP
+
+abstract class RemoteDataOOP<T> {
+  // private constructor(){}
+  // ??? нет ничего общего
+}
+
+class FailOOP<T> extends RemoteDataOOP<T> {
+  constructor(public error: string) {
+    super()
+  }
+}
+class SuccessOOP<T> extends RemoteDataOOP<T> {
+  constructor(public result: T) {
+    super()
+  }
+}
+class LoadingOOP<T> extends RemoteDataOOP<T> {
+
+}
+class NotAskedOOP<T> extends RemoteDataOOP<T> {
+
+}
+
+class RandomClass{}
+
+function fooOOP(x:  RemoteDataOOP<string>) {
+  if (x instanceof LoadingOOP) {
+    console.log("loading");
+  } else if (x instanceof NotAskedOOP) {
+    console.log("not Asked");
+  } else if (x instanceof FailOOP) {
+    console.log("failed with error: ", x.error);
+  } else if (x instanceof SuccessOOP /*&& typeof x.result === "number"*/) {
+    console.log("result = : ", x.result);// any!
+    processResult(x.result)
+  } else if (x instanceof RandomClass){
+
+  }
+  // switch (x instanceof ) {
+    
+  // }
+}
+
+
+
+
+
+// ADT
 interface NotAsked {
   kind: "NotAsked"
   sideLength: number
@@ -30,6 +87,11 @@ function foo(x: RemoteData<number>) {
       break;
     case "Success":
       console.log(x.result)
+      processResult(x.result)
       break;
   }
+}
+
+function processResult(result: number) {
+  
 }
