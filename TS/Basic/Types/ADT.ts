@@ -95,3 +95,4 @@ function foo(x: RemoteData<number>) {
 function processResult(result: number) {
   
 }
+
