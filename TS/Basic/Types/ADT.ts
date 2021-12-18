@@ -76,6 +76,7 @@ type RemoteData<T> = NotAsked | Loading | Success<T> | Fail;
 function foo(x: RemoteData<number>) {
   switch (x.kind) {
     case "NotAsked":
+      
       break;
 
     case "Loading": {

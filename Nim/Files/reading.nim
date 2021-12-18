@@ -3,7 +3,7 @@ let entireFile = readFile("reading.nim")
 echo entireFile  # prints the entire file
 
 
-proc readCode() =
+proc readFirstLine() =
   let f = open("reading.nim")
   # Close the file object when you are done with it
   defer: f.close()
@@ -11,4 +11,4 @@ proc readCode() =
   let firstLine = f.readLine()
   echo firstLine
 
-readCode()
+readFirstLine()
