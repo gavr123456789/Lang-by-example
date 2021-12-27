@@ -26,6 +26,5 @@ proc positiveOrNegative(num: int): string =
       "positive"
     else:
       "impossible"
-  
 
 echo positiveOrNegative(-1)
