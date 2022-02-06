@@ -24,9 +24,7 @@ pub fn switch_example(x: String) -> Nil {
 
 pub fn guess_game(answer num, lower low, upper upp) {
   assert Ok(line_with_nl) = get_line("Your guess: ")
-  let line = line_with_nl |> string.trim
-  io.debug(line)
-  assert Ok(answer) = line |> int.parse
+  assert Ok(answer) = line_with_nl |> string.trim |> int.parse
   case answer {
     ans if ans == num -> {io.debug("You win!"); ans}
     ans if ans > num -> {io.debug("Too high, try again"); guess_game(num, ans, upp)}
