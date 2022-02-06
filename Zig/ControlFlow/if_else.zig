@@ -1,9 +1,7 @@
 
 const std = @import("std");
 const rand = @import("rand");
-// use "rand.zig";
 
-// TODO don't duplicate these from std.zig; implement pub const
 const stdout_fileno : isize = 1;
 const stderr_fileno : isize = 2;
 
