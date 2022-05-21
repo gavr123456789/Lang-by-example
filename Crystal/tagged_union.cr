@@ -1,24 +1,3 @@
-# t1 = {x: 1, y: "hi"}   # Tuple(x: Int32, y: String)
-# t2 = {y: true, x: nil} # Tuple(y: Bool, x: Nil)
-
-# t3 = rand < 0.5 ? t1 : t2
-# typeof(t3) # NamedTuple(x: Int32 | Nil, y: String | Bool)
-
-
-record StageInitial, data : String
-record StageFinished, data : String
-alias Stage = StageInitial | StageFinished
-
-
-
-class ClassName
-  @a : String
-end
-
-# aqw = :z | :r
-# !p aqw
-###
-
 struct V4
   getter :octet1
 
@@ -35,20 +14,16 @@ struct V6
   end
 end
 
-alias Ip = V4 | V6 | String
+alias Ip = V4 | V6
 
 home = V4.new(127,0,0,1)
 loopback = V6.new("::1")
 
-
-def show_ip(ip : Ip): Void
-  case ip
-  in V4 
-    puts "ip v4 #{ip.octet1}"
-  in V6 then
-    puts "Sas"
+def show_ip(ip)
+  puts case ip
+  when V4 then "ip v4 #{ip.octet1}"
   # when V6 then "ip v6"
   end
 end
 
-show_ip V4.new 1,2,3,4
+show_ip V4.new(5,7,7,7)
