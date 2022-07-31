@@ -20,11 +20,12 @@ My new idea to make the same 13 examples in each language, they will be located 
 9) if
 10) switch/pm (on tagged union if possible)
 11) array/list/both
-12) hash map
+12) hash вщтуmap
 13) import from other file
 
 
-Ready basic
+Ready basics
 * Gleam
 * Rescript
 * F#
+* Nim
