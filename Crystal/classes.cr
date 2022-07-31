@@ -16,4 +16,5 @@ end
 john = Person.new "john"
 
 john.become_older
+joh
 puts john.age

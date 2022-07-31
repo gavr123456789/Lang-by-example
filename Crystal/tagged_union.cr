@@ -27,3 +27,13 @@ def show_ip(ip)
 end
 
 show_ip V4.new(5,7,7,7)
+
+
+record StageInitial, data : String
+record StageFinished, data : String
+alias Stage = StageInitial | StageFinished
+
+init = StageInitial.new(data: "sas")
+finished = StageFinished.new(data: "qwe")
+
+init = finished
