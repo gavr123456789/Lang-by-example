@@ -1,0 +1,1 @@
+proc add*(a, b: int): int = a + b

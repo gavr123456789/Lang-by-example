@@ -1,3 +1,6 @@
+// dotnet new console -lang F#
+// dotnet run
+// https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-fsharp
 
 // 1 type declaration 
 type Person = { Name : string; Age : int }
@@ -13,10 +16,10 @@ printfn "Hello World!"
 // 4 creating instance of type   
 let bob = { Name = "Bob"; Age = 28 }
 
-// 7 create function for type
+// 7 create a function for type
 let haveBirthday person = 
   // 6 change instance field
-  {person with Age = person.Age + 1}
+  {person with Age = person.Age + 1} // like {...person, Age: person.Age + 1} in typescript
 
 // mutable fields are possible
 type PersonWithMutName = 

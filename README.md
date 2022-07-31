@@ -4,11 +4,6 @@ it's something like [learnXinYminutes](https://learnxinyminutes.com/), but with 
 I prefer less well-known languages.   
 If you want to add your language, feel free to do PR ^^
 
-Languages:  
-* Nim
-* Gleam
-* F# WIP  
-* Typescript
 
 # Basic
 My new idea to make the same 13 examples in each language, they will be located in the `basic` folder  
@@ -24,8 +19,8 @@ My new idea to make the same 13 examples in each language, they will be located 
 8) loop
 9) if
 10) switch/pm (on tagged union if possible)
-11) create array
-12) create map
+11) array/list/both
+12) hash map
 13) import from other file
 
 
