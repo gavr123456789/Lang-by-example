@@ -1,0 +1,10 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx '/home/gavr/Projects/Lang-by-example/Rescript/basic/node_modules/rescript/linux/bsc.exe -as-ppx '
+S /home/gavr/Projects/Lang-by-example/Rescript/basic/node_modules/rescript/lib/ocaml
+B /home/gavr/Projects/Lang-by-example/Rescript/basic/node_modules/rescript/lib/ocaml
+FLG -w +a-4-9-20-40-41-42-50-61-102
+S /home/gavr/Projects/Lang-by-example/Rescript/basic/node_modules/rescript-nodejs/lib/ocaml
+B /home/gavr/Projects/Lang-by-example/Rescript/basic/node_modules/rescript-nodejs/lib/ocaml
+S src
+B lib/bs/src
+####BSB GENERATED: NO EDIT}
