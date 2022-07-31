@@ -32,3 +32,4 @@ My new idea to make the same 13 examples in each language, they will be located 
 Ready basic
 * Gleam
 * Rescript
+* F#

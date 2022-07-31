@@ -1,8 +1,13 @@
-Check basic folder
+Check `basic` folder please.
 
+
+# Setup
+https://marketplace.visualstudio.com/items?itemName=Gleam.gleam
 # create project with cli if possible
 `gleam new project_name`
 `gleam run`
+
+
 
 ### 1 type declaration 
 ```Gleam
