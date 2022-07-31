@@ -19,12 +19,11 @@ echo y()
 
 
 template ifTrue(a: bool, b: untyped): untyped =
-  echo "sas"
   if a:
-    return b
+    b
   else:
-    return
+    discard
 
 var p = true
-ifTrue(t):
+ifTrue(p):
   echo "sas"

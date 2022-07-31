@@ -30,7 +30,17 @@ mutableBob.Name = "Alica"
 bob|>haveBirthday // same as haveBirthday(bob) or haveBirthday bob
 
 // 8 loop
+for i = 1 to 10 do 
+  printf "%i" i
 
+for i = 10 downto 1 do 
+  printf "%i" i
+
+// 9 if
+let sign num = 
+  if num > 0 then "foo"
+  elif num < 0 then "bar"
+  else "42"
 
 // 10 Switch
 let getName user =
@@ -45,23 +55,38 @@ let list1 = [ "a"; "b" ]
 let list2 = "c" :: list1
 // concat
 let list3 = list1 @ list2   
-// Recursion on list using (::) operator
+// recursion on list using (::) operator
 let rec sum list = 
     match list with
     | [] -> 0
     | x :: xs -> x + sum xs
 
-// array
+// array (System.Array from C#)
 let arr = [| 1; 2 |]
-// You cant add to Array, it has static lenth, but you can create new arrays frnomold
+// you cant add to Array, it has static lenth, but you can create new arrays frnomold
 let arrWithNewItem = arr|>Array.append [| 3 |] // 1, 2, 3
-// Indexed access using dot
+
+// indexed access using dot
 let first = arr.[0]
 let strangeButWhyNot = [| for i in 1 .. 10 -> i * i |]
-
 let bothArrays = arr|>Array.append strangeButWhyNot
 
-// you can also create a mutable array, to avoid creating new arrays for new elements
-let mutable mutableArray = [| 1; 2 |]
-mutableArray <- mutableArray|>Array.append [| 3 |]
 
+// filter
+printfn "%A" (Array.filter (fun elem -> elem % 2 = 0) [| 1 .. 10 |])
+
+// you can also create a mutable array, to avoid creating new arrays for new elements
+// Other 2 ML languages: Gleam and Rescrpt just allows you to shadow previous declaration instead of `mutable`
+let mutable mutableArray = [| 1; 2 |]
+mutableArray <- mutableArray|>Array.append [| 3 |] // `<-` for assign to mutable values
+
+
+// 12 map
+let map = Map [ (1, "a"); (2, "b") ]
+map.Add((3, "c")) // its tuple
+(4, "d")|>map.Add
+
+// 13
+// #load "Add.fsx"
+// open Add
+// let sum = Add.add 1 2
