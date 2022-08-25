@@ -1,0 +1,86 @@
+// grain filename
+
+// 1 type declaration
+record Person { name: String, mut age: Number }
+
+// 2 tagged union declaration
+// u cant create tagget union on the place
+// need to declarate all tags in separated types
+record LoggedIn {name: String}
+enum User {
+  LoggedIn(LoggedIn),
+  Guest()
+}
+
+// 3 hello world
+print("Hello world")
+// 4 creating instance of type
+let bob = { name: "Bob", age: 42 }
+
+
+// mutation
+let mut b = "sas"
+b = "sus"
+
+// 7 create function for type
+let haveBirthday = (person: Person) => {
+  // 6 change instance field
+  // age marked as mutable
+  person.age += 1
+  person
+}
+
+// 5 call function
+haveBirthday(bob)
+
+// 8 loop
+// there are no for loop, use recursive funcs
+// or Range type
+import Range from "range"
+Range.forEach(val => print(val), Range.Exclusive(1, 3))
+
+// 9 if
+if (false) {
+  print("false")
+}
+
+
+enum Topping { Cheese, Pepperoni, Peppers, Pineapple }
+enum Menu { Pizza(Topping), Calzone(Topping) }
+
+let item = Calzone(Peppers)
+let sas = (x: String) => {
+  match (item) {
+    Calzone(Peppers) => print("These are half off this week."),
+    Pizza(Cheese) => print("We never discount this item."),
+    _ => print("No current specials.")
+  }
+
+}
+
+// 10 Switch
+let getName = (user: User) => {
+  match (user) {
+    // LoggedIn(loggedIn) => print(loggedIn.name),
+    _ => print("")
+  }
+}
+
+// 11 arrays
+let arr = [1, 2]
+// A list spread can only appear at the end of a list.
+let newArrPrepend = [0, ...arr]
+import { map } from "list"
+let mapped = map((n) => n + 3, [1, 2, 3])
+
+// 12 map
+
+import Map from "map"
+
+// map gets type after first set
+let hMap = Map.make()
+Map.set("b", "a", hMap)
+
+
+
+
