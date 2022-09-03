@@ -13,7 +13,7 @@ pub type User {
   Guest
 }
 
-// There are no top level expresisons, main is needed
+// There are no top level expressions, main is needed
 pub fn main() {
   // 3 hello world
   io.println("Hello world!")

@@ -1,7 +1,8 @@
 # nim r --hints=off file.nim
 # nimble init ProjectName
 # https://marketplace.visualstudio.com/items?itemName=nimsaem.nimvscode
-
+{.experimental: "strictEffects".}
+{.push raises:[] .}
 # 1 type declaration
 type Person = object
   name: string
@@ -72,9 +73,16 @@ let
 
 # 12 map
 import std/tables
-var table = {1: "a", 2: "b"}.toTable
-table[3] = "c"
-
+proc hg() =
+  
+  var table = {1: "a", 2: "b"}.toTable
+  try:
+    table[3] = "c"
+    # Error, if not catch(push raises:[])
+    echo table[4]
+  except KeyError:
+    echo "error"
+  
 # 13 import from another file
 import anotherFile
 let sum = 1.add 2

@@ -1,4 +1,4 @@
-// gleam run
+// swift run
 
 
 // 1 type declaration 
