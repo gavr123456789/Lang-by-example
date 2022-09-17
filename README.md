@@ -20,12 +20,16 @@ My new idea to make the same 13 examples in each language, they will be located 
 9) if
 10) switch/pm (on tagged union if possible)
 11) array/list/both
-12) hash вщтуmap
+12) hash map
 13) import from other file
 
 
 Ready basics
-* Gleam
-* Rescript
-* F#
-* Nim
+From ML to imperative or smth)
+* [Gleam](https://github.com/gavr123456789/Lang-by-example/blob/master/Gleam/basic/src/basic.gleam)
+* [Rescript](https://github.com/gavr123456789/Lang-by-example/blob/master/Rescript/basic/src/Basic.res)
+* [Grain](https://github.com/gavr123456789/Lang-by-example/blob/master/Grain/basic.gr)
+* [F#](https://github.com/gavr123456789/Lang-by-example/blob/master/F%23/basic/Basic.fsx)
+* [Nim](https://github.com/gavr123456789/Lang-by-example/blob/master/Nim/basic.nim)
+* [Kotlin](https://github.com/gavr123456789/Lang-by-example/blob/master/Kotlin/basic/src/main/kotlin/Main.kt)
+* [Swift](https://github.com/gavr123456789/Lang-by-example/blob/master/Swift/basic/Sources/basic/main.swift)
