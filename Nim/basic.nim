@@ -31,7 +31,7 @@ proc haveBirthday(self: var Person) = # var means mutable argument
 # "pure" functions are possible
 func haveBirthdatyPure(self: Person): Person =
   Person(name: self.name, age: self.age + 1)
-  
+
 # 5 call function
 bob.haveBirthday # same as haveBirthday(bob)
 
@@ -71,7 +71,7 @@ let
   filtered = mappedArr.filterIt(it mod 2 == 0)
   both = mappedArr.concat filtered
 
-# 12 map
+# 12 Map
 import std/tables
 proc hg() =
   
