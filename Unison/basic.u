@@ -1,0 +1,32 @@
+myTerm = List.map (x -> x * 10) [1,2,3,4,5,6]
+> myTerm
+
+-- 1 type declaration 
+-- types can be unique or structural
+unique type Person
+  = { name : Text,
+    age : Nat }
+
+bob = Person "Bob" 42
+> bob
+
+-- 2 tagged union declaration
+unique type LoggedInType 
+  = { name : Text }
+unique type User = 
+  LoggedIn LoggedInType | Guest
+
+getName2 : User -> Text
+getName2 user = "sas"
+
+-- 10 Switch
+getName : User -> Text
+getName user = cases
+  LoggedIn w -> "hgj"
+  Guest -> "Guest"
+  _ -> "ere"
+  
+
+-- qw = LoggedIn (LoggedInType "sas")
+-- > qw
+-- > getName qw

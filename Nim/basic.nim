@@ -1,7 +1,8 @@
 # nim r --hints=off file.nim
 # nimble init ProjectName
 # https://marketplace.visualstudio.com/items?itemName=nimsaem.nimvscode
-
+{.experimental: "strictEffects".}
+{.push raises:[] .}
 # 1 type declaration
 type Person = object
   name: string
@@ -30,7 +31,7 @@ proc haveBirthday(self: var Person) = # var means mutable argument
 # "pure" functions are possible
 func haveBirthdatyPure(self: Person): Person =
   Person(name: self.name, age: self.age + 1)
-  
+
 # 5 call function
 bob.haveBirthday # same as haveBirthday(bob)
 
@@ -70,11 +71,18 @@ let
   filtered = mappedArr.filterIt(it mod 2 == 0)
   both = mappedArr.concat filtered
 
-# 12 map
+# 12 Map
 import std/tables
-var table = {1: "a", 2: "b"}.toTable
-table[3] = "c"
-
+proc hg() =
+  
+  var table = {1: "a", 2: "b"}.toTable
+  try:
+    table[3] = "c"
+    # Error, if not catch(push raises:[])
+    echo table[4]
+  except KeyError:
+    echo "error"
+  
 # 13 import from another file
 import anotherFile
 let sum = 1.add 2

@@ -1,0 +1,17 @@
+acronym.abbreviate : Text -> Text
+acronym.abbreviate test = "sas"
+
+splitted = Text.split ?\s "as sq"
+> splitted
+
+-- sas : Text -> Text
+-- sas text = 
+--   Text.toUppercase text
+
+x = Text.reverse "sas"
+
+mapped = List.map (n -> (Text.take 1 n) ) splitted
+> mapped
+
+> Text.split ?\s "as sq" |> List.map (n -> Text.take 1 n )
+
