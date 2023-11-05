@@ -31,9 +31,9 @@ Person haveBirthday = age <- age + 1
 // 10 switch
 
 // smart casted inside branches 
-User getName = | this
-| Guest => "Guest" echo
-| LoggedIn => this name 
+User getName -> String = | this
+| Guest => "Guest"
+| LoggedIn => this name
 
 // 11 list
 list = {1 2 3}
