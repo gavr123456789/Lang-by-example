@@ -1,5 +1,3 @@
-// The file extension is scala for the sake of syntax highlighting
-
 // 1 type declaration
 type Person name: String age: Int
 
@@ -18,7 +16,7 @@ person = Person name: "sas" age: 6
 person haveBirthday
 
 // 7 create function for type
-// 6 change instance field
+// 6 change instance's field
 // yes, assign can be used as expression here
 Person haveBirthday = age <- age + 1
 
@@ -26,14 +24,13 @@ Person haveBirthday = age <- age + 1
 // 8 loop
 1 to: 3 do: [ it echo ]
 // 9 if
-| true => "true" echo
+true => "true" echo
 
 // 10 switch
-
-// smart casted inside branches 
-User getName -> String = | this
-| Guest => "Guest"
-| LoggedIn => this name
+// smart casted inside branches
+User getName = | this
+| Guest => "Guest" echo
+| LoggedIn => name echo // field of LoggedIn in scope
 
 // 11 list
 list = {1 2 3}
@@ -41,9 +38,10 @@ list add: 4
 // 1a 2a 3a 4a
 mappedList = list map: [it toString + "a"]
 
-// map 
+// map
 map = #{1 "a" 2 "b"}
-map key: 3 value: "c"
+map at: 3 put: "c"
 // "a"
-a = map get: 1
-| a != null => a echo
+a = map at: 1
+a != null => a echo
+
