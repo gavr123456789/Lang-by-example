@@ -1,3 +1,5 @@
 target
 .ionide
 .fake
+.clj-kondo
+.lsp
