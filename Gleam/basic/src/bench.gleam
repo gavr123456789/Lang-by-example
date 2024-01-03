@@ -1,6 +1,6 @@
 import gleam/result
 import gleam/list.{at}
-import gleam/list.{at}
+// import gleam/list.{at}
 import gleam/int.{add}
 
 pub type Op {
@@ -19,6 +19,6 @@ fn get(tape: Tape) {
 }
 
 fn inc(tape: Tape, x: Int) {
-  try y = tape.tape |> at(tape.pos) 
-  add(y, x) |> Ok()
+  // try y = tape.tape |> at(tape.pos) 
+  // add(y, x) |> Ok()
 }

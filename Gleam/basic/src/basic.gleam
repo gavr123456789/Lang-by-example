@@ -7,19 +7,32 @@ pub type Person {
   Person(name: String, age: Int)
 }
 
+pub type LoggedIn {
+  Admin
+  Moder
+  Usual
+  
+}
+
 // 2 tagged union declaration
 pub type User {
   LoggedIn(name: String)
   Guest
 }
 
+
 // There are no top level expressions, main is needed
 pub fn main() {
   // 3 hello world
   io.println("Hello world!")
+  let admin = Admin
+  let loggined = LoggedIn
+
+  // admin.get_name()
 
   // 4 creating instance of type   
   let person = Person(name: "Bob", age: 42)
+  person.age|>io.debug()
 
   // 5 call function
   let person = person|>have_birthday // same as have_birthday(person)
