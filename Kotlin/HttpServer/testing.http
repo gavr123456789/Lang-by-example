@@ -1,0 +1,17 @@
+### hello world
+@host = localhost:9000
+GET {{host}}
+
+### get json
+GET {{host}}/json
+Accept: application/json
+
+
+### post
+POST {{host}}/formats/json/moshi
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "gavr"
+}
