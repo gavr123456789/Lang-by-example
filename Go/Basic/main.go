@@ -25,7 +25,7 @@ type Node struct {
 	left, right Tree
 }
 
-func (_ Leaf) isTree()  {}
+func (_ Leaf) isTree() {}
 func (_ Node) isTree()  {}
 func (_ Empty) isTree() {}
 

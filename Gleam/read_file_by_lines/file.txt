@@ -1,0 +1,7 @@
+monday: +9
+monday: +6
+monday: +8
+monday: +2
+monday: +4
+monday: +7
+monday: +4

@@ -1,0 +1,86 @@
+require 'string'
+
+-- 3 hello world
+print 'Hello world'
+
+-- 1 type declaration
+local Person = @record{
+  name: string,
+  age: integer
+}
+
+-- 2 there are no tagged unions, only C unions
+-- so I will use a combo of enums, C unions and records to fake it ^_^
+-- kinda like in TS
+local LoggedIn = @record{
+  name: string
+}
+local Guest = @record{}
+
+local UserUnion = @union{
+  loggedIn: LoggedIn,
+  guest: Guest,
+}
+local UserEnum = @enum{
+  LoggedIn = 0,
+  Guest
+}
+
+local User = @record{
+  fakeTag: UserEnum,
+  data: UserUnion
+}
+
+-- cant create enum
+-- local user: User = {
+--   fakeTag: UserEnum.LoggedIn
+--   data: {
+--     loggedIn = {
+--       name: "Bob"
+--     }
+--   }
+-- }
+
+function User:getName()
+  switch self.fakeTag do
+  case UserEnum.LoggedIn then
+    print('welcome ' .. self.data.loggedIn.name)
+  case UserEnum.Guest then
+    print('welcome guest')
+  else
+    print 'NOT POSSIBLE'
+  end
+end 
+
+print(user:getName)
+
+-- forward declaration is needed
+-- 7 create function for type
+function Person:haveBirthday()
+  self.age = self.age + 1
+end
+
+function Person:haveBirthdayImmut(): Person
+  return {name = self.name, age = self.age + 1}
+end
+
+-- metamethod for Person
+function Person:__tostring()
+  return 'Person {name: ' .. self.name .. ', age: ' .. self.age .. '}'
+end
+
+-- 4 creating instance of type
+local person: Person = {name = "John", age = 20}
+
+
+print(person) -- Person {name: John, age: 20}
+person:haveBirthday()
+print(person) -- Person {name: John, age: 21}
+
+
+-- 8 loop
+local sum = 0
+for i = 1, 10 do
+  sum = sum + i
+end
+print('The sum is', sum)

@@ -1,0 +1,20 @@
+type DayAndTemp day: String temp: Int
+
+filepath = "file.txt"
+content = File path: filepath |> readText
+lines = content split: "\n"
+lines echo
+
+days_and_temps = lines map: [
+  day_and_temp = it split: ":"
+  day_and_temp count == 2 |> assertTrue: "Cant parse day and temp, separator is :"
+  day = day_and_temp at: 0 
+  temp = day_and_temp at: 1 |> trim toInt
+  DayAndTemp day: day temp: temp
+]
+
+temp_sum = days_and_temps |> 
+  inject: 0 into: [acc, day_and_temp -> day_and_temp temp + acc]
+
+temp_average = temp_sum / days_and_temps count
+temp_average echo

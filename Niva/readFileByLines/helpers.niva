@@ -1,0 +1,13 @@
+Bind package: "java.io" content: [
+  type File path: String
+  /// usage: `File path: "main.niva" |> readText`
+  File readText -> String
+  /// `File path: "newFile.txt" |> writeText`
+  File writeText::String -> Unit
+]
+
+Boolean assertTrue: msg::String = [
+  x = Compiler getName: 0
+  this == false => 
+    Error throwWithMessage: x + "\n" + msg |> orPANIC
+]

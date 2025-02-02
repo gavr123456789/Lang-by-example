@@ -1,0 +1,73 @@
+// 1 type declaration
+type Person name: String age: Int
+
+// 2 tagged union declaration
+union User =
+| LoggedIn name: String
+| Guest
+
+// 10 switch
+// smart casted inside branches
+User getName = | this
+| Guest => "Guest" echo
+| LoggedIn => name echo // field of LoggedIn in scope
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 3 hello world
+"Hello World!" echo
+// 4 creating instance of type
+// we need explicit type here, since we will modify it later
+// and thats the only way to declare that person is mutable(fields can be changed)
+personMut::mut Person = Person name: "Alice" age: 24
+// 5 call function
+personMut haveBirthday
+// same but immutable
+person = Person name: "Alice" age: 25
+agedPerson = person haveBirthdayImmut
+// ERROR receiver type main.Person is not mutable, but Person haveBirthday -> Unit declared for mutable type ...
+// person haveBirthday
+
+// 7 create function for type
+
+// method with name haveBirthday declared for mutable type Person
+// this means that it can be called only on mutable instance of the type
+mut Person haveBirthday = age <- age + 1 // 6 mutate instance's field
+
+// here is immutable version that returns a new copy with one field changed
+Person haveBirthdayImmut = this age: age inc
+//                 same as Person name: name age: age inc
+
+// 8 loop
+1 to: 3 do: [ it echo ]
+// 9 if syntax sugar
+true => "true" echo
+// as message
+true ifTrue: ["true" echo]
+
+
+
+// 11 list
+list = {1 2 3}m
+list add: 4
+// 1a 2a 3a 4a
+mappedList = list map: [it toString + "a"]
+
+// map
+map = #{1 "a" 2 "b"}
+map at: 3 put: "c"
+// "a"
+a = map at: 1
+a != null => a echo
+
