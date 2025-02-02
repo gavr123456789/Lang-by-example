@@ -4,6 +4,7 @@ import pf.Stdout
 # importing different module
 import Hello exposing [hello]
 
+# 0 just create file and run it with `roc dev`
 
 # 1 type declaration
 Person : { 

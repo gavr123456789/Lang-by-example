@@ -1,4 +1,6 @@
-// gleam run
+// 0 creating project
+// `gleam new project_name`
+// `gleam run`
 
 import gleam/io
 

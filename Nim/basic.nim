@@ -1,5 +1,9 @@
-# nim r --hints=off file.nim
-# nimble init ProjectName
+# 0 creating project
+# just creat a file and run
+# `nim r --hints=off file.nim`
+# or
+# `nimble init ProjectName`
+# `nimble run`
 # https://marketplace.visualstudio.com/items?itemName=nimsaem.nimvscode
 {.experimental: "strictEffects".}
 {.push raises:[] .}

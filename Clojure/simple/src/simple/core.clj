@@ -1,3 +1,6 @@
+;; 0 creating proj
+;; lein new app project-name
+
 (ns simple.core
   (:gen-class))
 
