@@ -12,47 +12,38 @@ local Person = @record{
 -- 2 there are no tagged unions, only C unions
 -- so I will use a combo of enums, C unions and records to fake it ^_^
 -- kinda like in TS
-local LoggedIn = @record{
-  name: string
-}
-local Guest = @record{}
-
-local UserUnion = @union{
-  loggedIn: LoggedIn,
-  guest: Guest,
-}
-local UserEnum = @enum{
-  LoggedIn = 0,
-  Guest
+local UserEnum = @enum {
+    LoggedIn = 0,
+    Guest
 }
 
-local User = @record{
-  fakeTag: UserEnum,
-  data: UserUnion
+local User = @record {
+    fakeTag: UserEnum,
+    data: union {
+        loggedIn: record {
+            name: string
+        },
+        guest: record {}
+    }
 }
 
--- cant create enum
--- local user: User = {
---   fakeTag: UserEnum.LoggedIn
---   data: {
---     loggedIn = {
---       name: "Bob"
---     }
---   }
--- }
+function User:getName(): string
+    switch self.fakeTag do
+        case UserEnum.LoggedIn then
+            return self.data.loggedIn.name
+        case UserEnum.Guest then
+            return 'guest'
+        else
+            return 'NOT POSSIBLE'
+    end
+end
 
-function User:getName()
-  switch self.fakeTag do
-  case UserEnum.LoggedIn then
-    print('welcome ' .. self.data.loggedIn.name)
-  case UserEnum.Guest then
-    print('welcome guest')
-  else
-    print 'NOT POSSIBLE'
-  end
-end 
+local user: User = {
+    UserEnum.LoggedIn,
+    {loggedIn = {"Bob"}}
+}
 
-print(user:getName)
+print("welcome, ", user:getName())
 
 -- forward declaration is needed
 -- 7 create function for type

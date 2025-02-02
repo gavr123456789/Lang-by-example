@@ -6,38 +6,23 @@ union User =
 | LoggedIn name: String
 | Guest
 
-// 10 switch
-// smart casted inside branches
-User getName = | this
-| Guest => "Guest" echo
-| LoggedIn => name echo // field of LoggedIn in scope
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 3 hello world
 "Hello World!" echo
+
+
 // 4 creating instance of type
 // we need explicit type here, since we will modify it later
 // and thats the only way to declare that person is mutable(fields can be changed)
 personMut::mut Person = Person name: "Alice" age: 24
+
 // 5 call function
 personMut haveBirthday
 // same but immutable
 person = Person name: "Alice" age: 25
 agedPerson = person haveBirthdayImmut
-// ERROR receiver type main.Person is not mutable, but Person haveBirthday -> Unit declared for mutable type ...
+// ERROR "receiver type main.Person is not mutable, but Person haveBirthday -> Unit declared for mutable type ..."
 // person haveBirthday
+
 
 // 7 create function for type
 
@@ -51,15 +36,25 @@ Person haveBirthdayImmut = this age: age inc
 
 // 8 loop
 1 to: 3 do: [ it echo ]
+
 // 9 if syntax sugar
 true => "true" echo
-// as message
+// as message(Smalltalk style), no overhead since inlining
 true ifTrue: ["true" echo]
 
+// 10 switch
+// switch on `this`
+// smart casted inside branches
+User getName = | this
+| Guest => "Welcome Guest" echo
+| LoggedIn => "Welcome $name" echo // every fields of `this` are in scope
 
+user = LoggedIn name: "Alice"
+user getName
 
 // 11 list
-list = {1 2 3}m
+// list literal creates immutable list by default
+list = {1 2 3}m // m is a unary message which makes list mutable
 list add: 4
 // 1a 2a 3a 4a
 mappedList = list map: [it toString + "a"]
