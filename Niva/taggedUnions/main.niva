@@ -1,0 +1,14 @@
+union Shape x: Int y: Int = 
+| Rectangle w: Int h: Int
+| Circle r: Int
+
+Shape area = | this
+| Rectangle => w * h, toDouble
+| Circle => 3.14 * (r * r) toDouble
+
+// test it
+circle = Circle r: 1 x: 0 y: 0
+rectangle = Rectangle w: 2 h: 4 x: 0 y: 0
+
+circle area echo
+rectangle area echo

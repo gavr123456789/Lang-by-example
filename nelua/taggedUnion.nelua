@@ -1,0 +1,65 @@
+local ShapeKind = @enum(integer) {
+  None = 0,
+  Rectangle = 1,
+  Circle = 2,
+}
+
+local Shape = @record{
+  kind: ShapeKind,
+  x: number, y: number
+}
+
+local Rectangle = @record{
+  kind: ShapeKind,
+  x: number, y: number,
+  w: number, h: number
+}
+
+local Circle = @record{
+  kind: ShapeKind,
+  x: number, y: number,
+  r: number
+}
+
+function Rectangle.create(x: number, y: number, w: number, h: number): Rectangle
+  return Rectangle{kind=ShapeKind.Rectangle, x=x, y=y, w=w, h=h}
+end
+
+function Rectangle:area(): number
+  return self.w * self.h
+end
+
+function Circle.create(x: number, y: number, r: number): Circle
+  return Circle{kind=ShapeKind.Circle, x=x, y=y, r=r}
+end
+
+function Circle:area(): number
+  return 3.14 * self.r * self.r
+end
+
+function Shape:area(): number
+  switch self.kind
+  case ShapeKind.Rectangle then
+    return Rectangle.area((@*Rectangle)(self))
+  case ShapeKind.Circle then
+    return Circle.area((@*Circle)(self))
+  else
+    return 0
+  end
+end
+
+do -- test it
+  local circle = Circle.create(0, 0, 1)
+  local rectangle = Rectangle.create(0, 0, 2, 2)
+
+  print 'naive example =>'
+  print('      rectangle area is', rectangle:area())
+  print('         circle area is', circle:area())
+
+  local shape: *Shape
+  shape = (@*Shape)(&rectangle)
+  print('   circle shape area is', shape:area())
+  shape = (@*Shape)(&circle)
+  print('rectangle shape area is', shape:area())
+  print ''
+end

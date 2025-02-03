@@ -18,24 +18,25 @@ local UserEnum = @enum {
 }
 
 local User = @record {
-    fakeTag: UserEnum,
-    data: union {
-        loggedIn: record {
-            name: string
-        },
-        guest: record {}
-    }
+  fakeTag: UserEnum,
+  data: union {
+    loggedIn: record {
+      name: string
+    },
+    guest: record {}
+  }
 }
 
 function User:getName(): string
-    switch self.fakeTag do
-        case UserEnum.LoggedIn then
-            return self.data.loggedIn.name
-        case UserEnum.Guest then
-            return 'guest'
-        else
-            return 'NOT POSSIBLE'
-    end
+  -- 10 switch
+  switch self.fakeTag do
+    case UserEnum.LoggedIn then
+      return self.data.loggedIn.name
+    case UserEnum.Guest then
+      return 'guest'
+    else
+      return 'NOT POSSIBLE'
+  end
 end
 
 local user: User = {
@@ -75,3 +76,27 @@ for i = 1, 10 do
   sum = sum + i
 end
 print('The sum is', sum)
+
+
+-- 9 if
+local a = 1 -- change this to 2 or 3 to trigger other ifs
+if a == 1 then
+  print 'is one'
+elseif a == 2 then
+  print 'is two'
+else
+  print('not one or two')
+end
+
+-- 11 collections
+local a: [4]integer = {1,2,3,4}
+print(a[0], a[1], a[2], a[3]) -- outputs: 1 2 3 4
+
+local b: [4]integer
+print(b[0], b[1], b[2], b[3]) -- outputs: 0 0 0 0
+local len = #b -- get the length of the array, should be 4
+print(len) -- outputs: 4
+
+-- I didn't find 
+
+-- hashmap TODO https://nelua.io/libraries/#hashmap
