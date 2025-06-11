@@ -1,6 +1,8 @@
+import gleam/dynamic/decode
 import gleam/http.{Post}
 import gleam/http/request
 import gleam/http/response
+import gleam/json
 import gleam/result
 import gleam/string
 import wisp.{type Request, type Response}
@@ -23,6 +25,35 @@ pub fn default_responses(handle_request: fn() -> Response) {
   let response = handle_request()
 
   response.set_header(response, "made-with", "Gleam")
+}
+
+pub type Person {
+  Person(name: String, age: Int)
+}
+
+pub fn person_from_json(json_string: String) -> Result(Person, json.DecodeError) {
+  let cat_decoder = {
+    use name <- decode.field("name", decode.string)
+    use age <- decode.field("age", decode.int)
+    decode.success(Person(name:, age:))
+  }
+  json.parse(from: json_string, using: cat_decoder)
+}
+
+pub fn parse_person(request: Request) {
+  let x = fn(request: Request) {
+    use body <- wisp.require_string_body(request)
+    let assert Ok(person) = person_from_json(body)
+    string.inspect(person) |> echo
+
+    wisp.ok()
+    |> wisp.string_body(string.inspect(person))
+  }
+
+  case request.method {
+    Post -> x(request)
+    _ -> wisp.method_not_allowed([Post])
+  }
 }
 
 pub fn reply(request: Request) {

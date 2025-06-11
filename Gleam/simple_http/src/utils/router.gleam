@@ -6,6 +6,7 @@ pub fn handle_request(req: Request) -> Response {
 
   case wisp.path_segments(req) {
     ["echo"] -> web.reply(req)
+    ["rar"] -> web.parse_person(req)
     ["hello", name] -> web.hello(name)
     _ -> web.not_found()
   }
